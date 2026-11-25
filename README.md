@@ -1,6 +1,41 @@
-# Livro Caixa App (Flutter)
+<p align="center">
+  <img src="assets/icon/icon.png" width="96" alt="Ícone do Livro Caixa">
+</p>
 
-App Flutter para a **API REST v1** do [Livro Caixa](../../apache/projetos/livro-caixa/docs/API.md).
+<h1 align="center">Livro Caixa App</h1>
+
+<p align="center">
+  App Flutter (Android, Linux e Web) para a <a href="https://github.com/alexandrellemes/livro-caixa/blob/master/docs/API.md">API REST v1</a> do
+  <a href="https://github.com/alexandrellemes/livro-caixa">Livro Caixa</a>: controle mensal de receitas e despesas.
+</p>
+
+## Telas
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/01-login.png" width="240" alt="Login"><br><b>Login</b></td>
+    <td align="center"><img src="docs/screenshots/02-resumo.png" width="240" alt="Resumo"><br><b>Resumo do mês</b></td>
+    <td align="center"><img src="docs/screenshots/03-movimentos.png" width="240" alt="Movimentos"><br><b>Movimentos</b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/04-novo-movimento.png" width="240" alt="Novo movimento"><br><b>Novo movimento</b></td>
+    <td align="center"><img src="docs/screenshots/05-categorias.png" width="240" alt="Categorias"><br><b>Categorias</b></td>
+    <td align="center"><img src="docs/screenshots/06-logs.png" width="240" alt="Logs"><br><b>Logs (admin)</b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/07-log-detalhe.png" width="240" alt="Detalhe do log"><br><b>Detalhe do log</b></td>
+    <td align="center"><img src="docs/screenshots/08-conta.png" width="240" alt="Conta"><br><b>Conta e tokens</b></td>
+    <td align="center"><img src="docs/screenshots/09-resumo-escuro.png" width="240" alt="Resumo no tema escuro"><br><b>Tema escuro</b></td>
+  </tr>
+</table>
+
+> Os prints usam dados fictícios. Para gerá-los de novo (por exemplo, depois de mudar uma tela):
+>
+> ```bash
+> flutter test --update-goldens tool/screenshots/screenshots_test.dart
+> ```
+>
+> O script abre o app real com uma API simulada e grava as imagens em `docs/screenshots/`.
 
 ## Funcionalidades
 
@@ -63,4 +98,8 @@ lib/
   screens/              telas
   widgets/              componentes comuns (erro, vazio, seletor de mês, recarga entre abas)
   util/format.dart      moeda, datas e conversão de valores pt-BR
+test/                   testes do cliente da API e de widgets
+tool/screenshots/       gerador dos prints do README (API simulada)
+docs/screenshots/       prints das telas
+assets/icon/            imagem-fonte do ícone
 ```

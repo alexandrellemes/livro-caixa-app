@@ -1,10 +1,16 @@
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api/api_client.dart';
 
 /// Estado de login: URL da API, token e perfil, persistidos no dispositivo.
 class Session extends ChangeNotifier {
+  /// [httpClient] permite trocar o cliente HTTP (ex.: MockClient nos testes).
+  Session({this.httpClient});
+
+  final http.Client? httpClient;
+
   static const _kBaseUrl = 'base_url';
   static const _kToken = 'token';
   static const _kUsuario = 'usuario';
@@ -43,7 +49,7 @@ class Session extends ChangeNotifier {
     perfil = prefs.getString(_kPerfil);
 
     if (token != null) {
-      _api = ApiClient(baseUrl: baseUrl, token: token);
+      _api = ApiClient(baseUrl: baseUrl, token: token, httpClient: httpClient);
       try {
         final me = await _api!.me();
         usuario = me.usuario;
@@ -59,7 +65,7 @@ class Session extends ChangeNotifier {
   }
 
   Future<void> login(String url, String username, String password) async {
-    final client = ApiClient(baseUrl: url);
+    final client = ApiClient(baseUrl: url, httpClient: httpClient);
     final gerado = await client.gerarToken(username, password);
     client.token = gerado.token;
 

@@ -92,6 +92,8 @@ class _CategoriasScreenState extends State<CategoriasScreen> with RecarregaAoAlt
     return Scaffold(
       floatingActionButton: admin
           ? FloatingActionButton.extended(
+              // As abas ficam vivas no IndexedStack: cada FAB precisa de um Hero próprio.
+              heroTag: 'fab-categorias',
               onPressed: () => _editar(),
               icon: const Icon(Icons.add),
               label: const Text('Categoria'),

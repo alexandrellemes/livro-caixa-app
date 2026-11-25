@@ -145,6 +145,8 @@ class _MovimentosScreenState extends State<MovimentosScreen> with RecarregaAoAlt
     return Scaffold(
       floatingActionButton: admin
           ? FloatingActionButton.extended(
+              // As abas ficam vivas no IndexedStack: cada FAB precisa de um Hero próprio.
+              heroTag: 'fab-movimentos',
               onPressed: () => _abrirFormulario(),
               icon: const Icon(Icons.add),
               label: const Text('Lançar'),
